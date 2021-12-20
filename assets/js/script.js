@@ -11,13 +11,12 @@ var blockColors= function() {
 
     // iterate through hour blocks, find present, past, future and add respective color class
     $(".time-block").each(function() {
-        var getElId = parseInt($(this).attr("id"));
-        // 
-        if (nowTime === getElId) {
+        // compare nowTime with ID and add/remove classes
+        if (nowTime === parseInt($(this).attr("id"))) {
             $(this).removeClass("future");
             $(this).removeClass("past");
             $(this).addClass("present");
-        } else if (nowTime < getElId) {
+        } else if (nowTime < parseInt($(this).attr("id"))) {
             $(this).removeClass("future");
             $(this).removeClass("present");
             $(this).addClass("past");
@@ -32,6 +31,8 @@ var blockColors= function() {
 // save to local storage
 saveBtn.on("click", function () {
     // store textarea data to localstorage
+    console.log($(this).siblings(".hour").text());
+    console.log($(this).siblings(".plan").val());
 });
 
 blockColors();
