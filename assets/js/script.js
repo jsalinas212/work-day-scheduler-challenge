@@ -9,9 +9,10 @@ var blockColors= function() {
     // get hours
     var numHours = moment().hours();
 
-
-    console.log(numHours);
-
+    // iterate through hours, find present, past, future and add respective color class
+    $(".time-block").each(function() {
+        // 
+    })
 };
 
 // save to local storage
