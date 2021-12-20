@@ -30,9 +30,12 @@ var blockColors= function() {
 
 // save to local storage
 saveBtn.on("click", function () {
-    // store textarea data to localstorage
-    console.log($(this).siblings(".hour").text());
-    console.log($(this).siblings(".plan").val());
+    // retrieve event hour and text
+    var eventHour = $(this).siblings(".hour").text();
+    var eventText = $(this).siblings(".plan").val();
+
+    // set hour and event text to local storage
+    localStorage.setItem(eventHour, eventText);
 });
 
 blockColors();
