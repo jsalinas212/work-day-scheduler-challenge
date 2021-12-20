@@ -5,7 +5,7 @@ $("#todayDate").text(moment().format('dddd MMMM Do YYYY'));
 
 
 // color time blocks
-var blockColors= function() {
+var blockColors = function() {
     // get hours
     var nowTime = moment().hour();
 
@@ -28,6 +28,19 @@ var blockColors= function() {
     })
 };
 
+// retrieve local storage to display on planner
+var getEvents = function() {
+    // iterate through time blocks, pull and populate events from storage
+    $(".time-block").each(function() {
+        var currentHour = $(this).children(".hour").text();
+        var storedHour = localStorage.getItem(currentHour);
+        // check if not null
+        if (storedHour) {
+            $(this).children(".plan").val(storedHour);
+        }
+    })
+}
+
 // save to local storage
 saveBtn.on("click", function () {
     // retrieve event hour and text
@@ -39,3 +52,4 @@ saveBtn.on("click", function () {
 });
 
 blockColors();
+getEvents();
